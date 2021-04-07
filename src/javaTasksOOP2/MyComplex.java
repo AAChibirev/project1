@@ -1,5 +1,7 @@
 package javaTasksOOP2;
 
+import java.math.BigDecimal;
+
 class MyComplex {
     private double real = 0.0;
     private double imag = 0.0;
@@ -52,13 +54,15 @@ class MyComplex {
     }
 
     public boolean equals(double real, double imag){
-        if ((this.real == real) && (this.imag == imag)){
+        if ((new BigDecimal(this.real).compareTo(new BigDecimal(real)) == 0) &&
+                (new BigDecimal(this.imag).compareTo(new BigDecimal(imag)) == 0)) {
             return true;
         } else return false;
     }
 
     public boolean equals(MyComplex another){
-        if ((this.real == another.getReal()) && (this.imag == another.getImag())){
+        if ((new BigDecimal(this.real).compareTo(new BigDecimal(another.getReal())) == 0) &&
+                (new BigDecimal(this.imag).compareTo(new BigDecimal(another.getImag())) == 0)) {
             return true;
         } else return false;
     }
