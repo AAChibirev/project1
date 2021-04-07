@@ -1,5 +1,7 @@
 package javaTasksOOP2;
 
+import java.math.BigDecimal;
+
 public class Container {
     private int x1;
     private int y1;
@@ -31,8 +33,10 @@ public class Container {
 
     //return TRUE if ball collides vertical border
     public boolean collidesWithVerticalBorder(Ball ball){
+        BigDecimal ballLeftBorder = new BigDecimal(ball.getX() - ball.getRadius());
+        BigDecimal ballRightBorder = new BigDecimal(ball.getX() + ball.getRadius());
 
-        if (((ball.getX() - ball.getRadius()) <= x1) || ((ball.getX() + ball.getRadius()) >= x2)) {
+        if ((ballLeftBorder.compareTo(new BigDecimal(x1)) <= 0) || (ballRightBorder.compareTo(new BigDecimal(x2)) >= 0)) {
             System.out.println("Collision with vertical border\nBall: "+ball.getX() + "," + ball.getY() + ",r="+ball.getRadius());
             return true;
         }
@@ -42,7 +46,10 @@ public class Container {
 
     //return TRUE if ball collides horizontal border
     public boolean collidesWithHorizontalBorder(Ball ball){
-        if (((ball.getY() - ball.getRadius()) <= y1) || ((ball.getY() + ball.getRadius()) >= y2)) {
+        BigDecimal ballTopBorder = new BigDecimal(ball.getY() - ball.getRadius());
+        BigDecimal ballBottomBorder = new BigDecimal(ball.getY() + ball.getRadius());
+
+        if ((ballTopBorder.compareTo(new BigDecimal(y1)) <= 0) || (ballBottomBorder.compareTo(new BigDecimal(y2)) >= 0)) {
             System.out.println("Collision with horizontal border\nBall: "+ball.getX() + "," + ball.getY() + ",r="+ball.getRadius());
             return true;
         }
